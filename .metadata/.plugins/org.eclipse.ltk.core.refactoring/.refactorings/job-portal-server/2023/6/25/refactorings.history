@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.hostmdy.jobPortal.domain.ApplyJobForm&apos; to &apos;ApplicationRequest&apos;&#x0D;&#x0A;- Original project: &apos;job-portal-server&apos;&#x0D;&#x0A;- Original element: &apos;com.hostmdy.jobPortal.domain.ApplyJobForm&apos;&#x0D;&#x0A;- Renamed element: &apos;com.hostmdy.jobPortal.domain.ApplicationRequest&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ApplyJobForm&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.hostmdy.jobPortal.domain{ApplyJobForm.java[ApplyJobForm" matchStrategy="1" name="ApplicationRequest" qualified="false" references="true" similarDeclarations="false" stamp="1687338637712" textual="false" version="1.0"/>
+</session>

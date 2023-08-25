@@ -1,0 +1,110 @@
+package com.hostmdy.jobPortal;
+
+import java.time.LocalDateTime;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.hostmdy.jobPortal.domain.Category;
+import com.hostmdy.jobPortal.domain.Company;
+import com.hostmdy.jobPortal.domain.JobPost;
+import com.hostmdy.jobPortal.domain.JobTypes;
+import com.hostmdy.jobPortal.domain.Location;
+import com.hostmdy.jobPortal.domain.User;
+import com.hostmdy.jobPortal.domain.jobenum.City;
+import com.hostmdy.jobPortal.domain.jobenum.Country;
+import com.hostmdy.jobPortal.domain.jobenum.Status;
+import com.hostmdy.jobPortal.service.CategorySevice;
+import com.hostmdy.jobPortal.service.CompanyService;
+import com.hostmdy.jobPortal.service.JobPostService;
+import com.hostmdy.jobPortal.service.JobTypeService;
+import com.hostmdy.jobPortal.service.LocationService;
+import com.hostmdy.jobPortal.service.UserService;
+
+@SpringBootApplication
+public class JobPortalServerApplication implements CommandLineRunner{
+
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	CompanyService companyService;
+	
+	@Autowired
+	JobTypeService jobTypesService;
+	
+	@Autowired
+	CategorySevice categorySevice;
+	
+	@Autowired
+	LocationService locationService;
+	
+	@Autowired
+	JobPostService jobPostService;
+	
+	public static void main(String[] args) {
+		SpringApplication.run(JobPortalServerApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		// TODO Auto-generated method stub
+		
+		User user1 = new User();
+		user1.setFirstname("Mg");
+		user1.setLastname("Gyi");
+		user1.setFullname("Mg Myi");
+		user1.setUsername("mggyi@gmail.com");
+		user1.setPassword("1234");
+		user1.setConfirmPassword("1234");
+		userService.saveUser(user1);
+		
+		Company company1 = new Company();
+		company1.setName("Telenor");
+		company1.setEmail("telenor@gmail.com");
+		company1.setAddress("Mandalay");
+		company1.setPhone("0909090909");
+		
+        companyService.save(company1);
+        
+        
+        
+		
+		JobTypes jobTypes1 = new JobTypes();
+		jobTypes1.setJobTypes("Full Time");
+		jobTypesService.save(jobTypes1);
+		
+		Category category1 = new Category();
+		category1.setName("CustomerService");
+		categorySevice.save(category1);
+		
+		Location location1 = new Location();
+		location1.setName("Mandalay");
+		
+		Location location2 = new Location();
+		location2.setName("Yangon");
+		
+		locationService.save(location1);
+		
+		JobPost jobPost1 = new JobPost();
+		jobPost1.setTitle("This is Title");
+		jobPost1.setDescriptions("This is Description");
+		jobPost1.setRequirement("This is Requirements");
+		jobPost1.setStatus(Status.ACTIVE);;
+		jobPost1.setDeadline(LocalDateTime.now());
+		jobPost1.setPublishedOn(LocalDateTime.now());
+		jobPost1.setCompany(company1);
+		jobPost1.setJobTypes(jobTypes1);
+		jobPost1.setCategory(category1);
+		jobPost1.setLocation(location1);
+
+		
+		jobPostService.save(jobPost1);	
+		
+		
+	}
+
+}
